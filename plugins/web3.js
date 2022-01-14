@@ -1,4 +1,5 @@
 import Web3 from "web3"
+import artifacts from "~~/build/contracts/GeneSlimeMoldAlpha.json"// コントラクトのコンパイル後の設定ファイルの読み込み
 
 export default async function(context, inject) {
     let web3
