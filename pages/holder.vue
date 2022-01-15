@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Header />
+    <HeaderMenu />
+    <MyGeneData />
+    <MyOfferedUseEvent />
+    <MyBlockUserList />
   </div>
 </template>
 

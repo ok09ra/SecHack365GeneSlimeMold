@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header />
-
+    <HeaderMenu />
+    <h1>by taiyaki</h1>
   </div>
 </template>
 

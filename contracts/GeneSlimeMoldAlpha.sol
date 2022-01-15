@@ -123,6 +123,7 @@ contract GeneSlimeMoldAlpha{
     //use eventを実行する。
     function execute_use_event(uint use_event_id)public{
         require(use_event_list[use_event_id].event_owner_address == msg.sender);
+        require(use_event_list[use_event_id].is_executed == false);        
         require(use_event_list[use_event_id].is_approved);
         require(use_event_list[use_event_id].pay_amount <= address(this).balance);
         balance_to(use_event_list[use_event_id].offer_to_address, use_event_list[use_event_id].pay_amount);

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Header />
+    <HeaderMenu />
+    <MakeUseEventForm />
+    <MyMadeEvent />
   </div>
 </template>
 
