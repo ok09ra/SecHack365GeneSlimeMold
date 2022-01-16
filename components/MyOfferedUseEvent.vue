@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(my_use_event, index) in this.$store.state.my_use_event_data" :key="index">
+                <tr v-for="(my_use_event, index) in this.$store.state.user_data.my_use_event_data" :key="index">
                     <td>{{my_use_event.description}}</td>
                     <td>{{my_use_event.offer_to_address}}</td>
                     <td>{{my_use_event.is_approved}}</td>
@@ -30,7 +30,6 @@
     export default {
         
         Data() {
-            my_use_event_datas = []
         },
         methods:{
             getMyUseEvent: async function(e){
