@@ -6,11 +6,12 @@ export default async function(context, inject) {
     let web3
 
     if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
-        web3 = new Web3(window.ethereum)
-        window.ethereum.enable().catch(error => {
+        await window.ethereum.enable().catch(error => {
             // User denied account access
             console.log(error);
         })
+        web3 = new Web3(window.ethereum)
+
     } else if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
         web3 = new Web3(window.web3.currentProvider)
     } else {
@@ -23,7 +24,7 @@ export default async function(context, inject) {
         artifacts.abi, // コントラクトのコンパイル後の設定ファイル
         artifacts.networks[networkId].address // ネットワークIDごとに保存されているコントラクトのアドレスを読み込む
     )
-    
+
     let my_address = await contract.methods.request_my_account_address().call();
     context.store.dispatch("user_data/get_my_address", my_address);
     //console.log("my account address: " + context.store.state.user_data.my_address);
