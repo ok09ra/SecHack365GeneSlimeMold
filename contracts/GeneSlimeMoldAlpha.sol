@@ -158,8 +158,8 @@ contract GeneSlimeMoldAlpha{
         gene_mining_data_list[gene_mining_data_id].is_blocked_by_holder = true;
     }
 
+    
 /*情報表示関連*/
-
     //自分のアドレスを参照する。
     function request_my_account_address() public view returns(address){
         return msg.sender;

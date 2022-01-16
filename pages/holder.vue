@@ -3,7 +3,7 @@
     <HeaderMenu />
     <MyGeneData />
     <MyOfferedUseEvent />
-    <MyBlockUserList />
+    <BlockListForm />
   </div>
 </template>
 

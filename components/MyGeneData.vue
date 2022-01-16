@@ -15,11 +15,11 @@
                 <tr v-for="(my_gene_data, index) in this.$store.state.user_data.my_gene_data" :key="index">
                     <td>{{my_gene_data.description}}</td>
                     <td>{{my_gene_data.miner_address}}</td>
-                    <td>{{my_gene_data.gene_url}}</td>
-                    <td>{{my_gene_data.is_accepted}}</td>
-                    <td>{{my_gene_data.is_blocked}}</td>
-                    <td><button>accept</button></td>
-                    <td><button>block</button></td>
+                    <td>{{my_gene_data.url}}</td>
+                    <td>{{my_gene_data.is_accepted_by_holder}}</td>
+                    <td>{{my_gene_data.is_blocked_by_holder}}</td>
+                    <td><button @click="acceptGeneData(my_gene_data.id)">accept</button></td>
+                    <td><button @click="blockGeneData(my_gene_data.id)">block</button></td>
                 </tr>
             </tbody>
         </table>
@@ -33,7 +33,12 @@
         },
         methods:{
             acceptGeneData: async function(gene_data_id){
-                
+                let my_account = await this.$contract.methods.request_my_account_address().call();
+                await this.$contract.methods.accept_mining_gene(gene_data_id).send({from: my_account});
+            },
+            blockGeneData: async function(gene_data_id){
+                let my_account = await this.$contract.methods.request_my_account_address().call();
+                await this.$contract.methods.blocked_mining_gene(gene_data_id).send({from: my_account});
             }
         }
     }

@@ -18,7 +18,8 @@
                     <td>{{my_use_event.is_approved}}</td>
                     <td>{{my_use_event.is_blocked}}</td>
                     <td>{{my_use_event.is_executed}}</td>
-                    <td><button>execute</button></td>
+                    <td><button @click="acceptUseEvent(my_use_event.id)">accept</button></td>
+                    <td><button @click="blockUseEvent(my_use_event.id)">block</button></td>
                 </tr>
             </tbody>
         </table>
@@ -32,11 +33,13 @@
         Data() {
         },
         methods:{
-            getMyUseEvent: async function(e){
-                this.my_use_event_datas = await this.$contract.methods.request_own_use_event_list().call();
+            acceptUseEvent: async function(gene_data_id){
+                let my_account = await this.$contract.methods.request_my_account_address().call();
+                await this.$contract.methods.approve_use_event_offer(gene_data_id).send({from: my_account});
             },
-            acceptGeneData: async function(gene_data_id){
-                
+            blockUseEvent: async function(gene_data_id){
+                let my_account = await this.$contract.methods.request_my_account_address().call();
+                await this.$contract.methods.block_use_event_offer(gene_data_id).send({from: my_account});
             }
         }
     }

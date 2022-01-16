@@ -18,10 +18,8 @@
                     <td>{{my_mined_gene.description}}</td>
                     <td>{{my_mined_gene.miner_address}}</td>
                     <td>{{my_mined_gene.gene_url}}</td>
-                    <td>{{my_mined_gene.is_accepted}}</td>
-                    <td>{{my_mined_gene.is_blocked}}</td>
-                    <td><button>accept</button></td>
-                    <td><button>block</button></td>
+                    <td>{{my_mined_gene.is_accepted_by_holder}}</td>
+                    <td>{{my_mined_gene.is_blocked_by_holder}}</td>
                 </tr>
             </tbody>
         </table>
