@@ -6,5 +6,10 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name:"index",
+  components:{
+    HeaderMenu: () => import("~/components/HeaderMenu"),
+  }
+}
 </script>

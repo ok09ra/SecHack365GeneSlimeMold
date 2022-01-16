@@ -7,5 +7,7 @@
 </template>
 
 <script>
-
+export default {
+  name:"miner",
+}
 </script>

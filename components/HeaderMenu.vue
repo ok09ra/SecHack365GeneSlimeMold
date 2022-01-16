@@ -1,13 +1,24 @@
 <template>
-    <dev id="Head">
+    <div>
         <h1 id="ProjectTitle">GENE SLIME MOLD</h1>
-        <p id="UserAddress">ADDRESS</p>
+        <p id="UserAddress">{{ $store.state.user_data.my_address }}</p>
         <li><nuxt-link to="/" >Top page</nuxt-link></li>
         <li><nuxt-link to="/holder" >Gene Holder Page</nuxt-link></li>
         <li><nuxt-link to="/usereventmaker" >Use Event Maker Page</nuxt-link></li>
         <li><nuxt-link to="/miner" >Gene Miner Page</nuxt-link></li>
-    </dev>
+    </div>
 </template>
+
+<script>
+console.log(this)
+export default{
+    name:"HeaderMenu",
+    computed:{
+    },
+    methods : {
+    },
+}
+</script>
 
 <style>
     #Head {

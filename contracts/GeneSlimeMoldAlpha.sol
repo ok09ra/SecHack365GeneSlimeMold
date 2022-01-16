@@ -22,6 +22,7 @@ contract GeneSlimeMoldAlpha{
 
     //発行するイベントの情報
     struct UseEvent{
+        uint id;
         address event_owner_address;
         string description;
         address payable offer_to_address;
@@ -31,7 +32,9 @@ contract GeneSlimeMoldAlpha{
         bool is_executed;
     }
     
+    //解析データを取得
     struct GeneMiningData{
+        uint id;
         string url;
         string description;
         address gene_holder_address;
@@ -44,13 +47,12 @@ contract GeneSlimeMoldAlpha{
     mapping(address => GeneMiner) private gene_miner_list; //ユーザーと遺伝子マイニング情報を紐づけ
     mapping(address => UseEventMaker) private use_event_maker_list; //ユーザーと遺伝子使用イベントを紐づけ
 
-    UseEvent[] public use_event_list; //use eventのリスト
     GeneMiningData[] public gene_mining_data_list; //解析結果のデータのリスト
+    UseEvent[] public use_event_list; //use eventのリスト
 
-    address[] empty; //空配列
     address public supervisor; //コントラクトのオーナー
 
-    constructor(){
+    constructor() public payable {
         supervisor = msg.sender; //コントラクトがデプロイされたときのオーナーをスーパーバイザーとする。
     }
 
@@ -89,11 +91,11 @@ contract GeneSlimeMoldAlpha{
 /*遺伝子使用イベント定義関連 */
     //use event maker がuse event を発行する。
     function generate_use_event(string memory description, address payable offer_to_address, uint payment) public {
-        require(use_event_maker_list[msg.sender].is_available);//実行者がevent makerであるかを確認
+        //require(use_event_maker_list[msg.sender].is_available);//実行者がevent makerであるかを確認
         require(gene_holder_list[offer_to_address].block_address_list[msg.sender] == false);//ブロックリストに含まれていないか
         uint id = use_event_list.length;
         
-        use_event_list.push(UseEvent(msg.sender, description, offer_to_address, payment, false, false, false)); // use_event_listに定義したuse eventを入力して、その配列の番号をidとして保持
+        use_event_list.push(UseEvent(id, msg.sender, description, offer_to_address, payment, false, false, false)); // use_event_listに定義したuse eventを入力して、その配列の番号をidとして保持
         use_event_maker_list[msg.sender].use_event_id_list.push(id); //自分のuse_event_listにidを加える。
 
         gene_holder_list[offer_to_address].use_event_id_list.push(id);//オファーするgene holderにidを送る。
@@ -125,18 +127,19 @@ contract GeneSlimeMoldAlpha{
         require(use_event_list[use_event_id].event_owner_address == msg.sender);
         require(use_event_list[use_event_id].is_executed == false);        
         require(use_event_list[use_event_id].is_approved);
-        require(use_event_list[use_event_id].pay_amount <= address(this).balance);
-        balance_to(use_event_list[use_event_id].offer_to_address, use_event_list[use_event_id].pay_amount);
+        //require(use_event_list[use_event_id].pay_amount <= address(this).balance);
+        //balance_to(use_event_list[use_event_id].offer_to_address, use_event_list[use_event_id].pay_amount);
         use_event_list[use_event_id].is_executed = true;
     }
 
 /*遺伝情報の定義情報*/
     //解析情報を追加する
     function register_mining_gene(address gene_holder_address, string memory gene_url, string memory description) public {
-        require(gene_miner_list[msg.sender].is_available);
+        //require(gene_miner_list[msg.sender].is_available);
         require(gene_holder_list[gene_holder_address].block_address_list[msg.sender] == false);//ブロックリストに含まれていないか
         uint id = gene_mining_data_list.length;
-        gene_mining_data_list.push(GeneMiningData(gene_url, description, gene_holder_address, msg.sender, false, false));
+
+        gene_mining_data_list.push(GeneMiningData(id, gene_url, description, gene_holder_address, msg.sender, false, false));
         gene_holder_list[gene_holder_address].gene_mining_data_id_list.push(id);
         gene_miner_list[msg.sender].mined_gene_mining_data_id_list.push(id);
     }
@@ -156,53 +159,55 @@ contract GeneSlimeMoldAlpha{
     }
 
 /*情報表示関連*/
+
+    //自分のアドレスを参照する。
+    function request_my_account_address() public view returns(address){
+        return msg.sender;
+    }
+
     //自分の遺伝子解析情報を取得する。
-    function request_own_gene_mining_data_list() public view returns(GeneMiningData[] memory){
-        uint[] memory gene_mining_data_id_list; 
-        GeneMiningData[] memory own_gene_mining_data_list;
-        gene_mining_data_id_list = gene_holder_list[msg.sender].gene_mining_data_id_list;        
-        
-        for(uint i = 0; i < gene_mining_data_id_list.length; i++){
-            own_gene_mining_data_list[i] = gene_mining_data_list[gene_mining_data_id_list[i]];
+    function request_own_gene_mining_data_list() external view returns(GeneMiningData[] memory){
+        uint array_length = gene_holder_list[msg.sender].gene_mining_data_id_list.length;  
+        GeneMiningData[] memory own_gene_mining_data_list = new GeneMiningData[](array_length);
+
+        for(uint i = 0; i < array_length; i++){
+            own_gene_mining_data_list[i] = gene_mining_data_list[gene_holder_list[msg.sender].gene_mining_data_id_list[i]];
         }
 
         return own_gene_mining_data_list;
     }
 
     //自分あてのuse eventを取得する。
-    function request_own_use_event_list() public view returns(UseEvent[] memory){
-        uint[] memory use_event_id_list; 
-        UseEvent[] memory own_use_event_list;
-        use_event_id_list = gene_holder_list[msg.sender].use_event_id_list;
+    function request_own_use_event_list() external view returns(UseEvent[] memory){
+        uint array_length = gene_holder_list[msg.sender].use_event_id_list.length;
+        UseEvent[] memory own_use_event_list = new UseEvent[](array_length);
         
-        for(uint i = 0; i < use_event_id_list.length; i++){
-            own_use_event_list[i] = use_event_list[use_event_id_list[i]];
+        for(uint i = 0; i < array_length; i++){
+            own_use_event_list[i] = use_event_list[gene_holder_list[msg.sender].use_event_id_list[i]];
         }
 
         return own_use_event_list;
     }
 
     //自分が解析したデータの一覧を取得する。
-    function request_own_mined_gene_mining_data_list() public view returns(GeneMiningData[] memory){
-        uint[] memory mined_gene_mining_data_id_list; 
-        GeneMiningData[] memory own_mined_gene_mining_data_list;
-        mined_gene_mining_data_id_list = gene_miner_list[msg.sender].mined_gene_mining_data_id_list;
+    function request_own_mined_gene_mining_data_list() external view returns(GeneMiningData[] memory){
+        uint array_length = gene_miner_list[msg.sender].mined_gene_mining_data_id_list.length;
+        GeneMiningData[] memory own_mined_gene_mining_data_list = new GeneMiningData[](array_length);
         
-        for(uint i = 0; i < mined_gene_mining_data_id_list.length; i++){
-            own_mined_gene_mining_data_list[i] = gene_mining_data_list[mined_gene_mining_data_id_list[i]];
+        for(uint i = 0; i < array_length; i++){
+            own_mined_gene_mining_data_list[i] = gene_mining_data_list[gene_miner_list[msg.sender].mined_gene_mining_data_id_list[i]];
         }
 
         return own_mined_gene_mining_data_list;
     }
 
     //自分が発行したuse eventを取得する。
-    function request_own_made_use_event_list() public view returns(UseEvent[] memory){
-        uint[] memory use_event_id_list; 
-        UseEvent[] memory own_use_event_list;
-        use_event_id_list = use_event_maker_list[msg.sender].use_event_id_list;
-        
-        for(uint i = 0; i < use_event_id_list.length; i++){
-            own_use_event_list[i] = use_event_list[use_event_id_list[i]];
+    function request_own_made_use_event_list() external view returns(UseEvent[] memory){
+        uint array_length = use_event_maker_list[msg.sender].use_event_id_list.length;
+        UseEvent[] memory own_use_event_list = new UseEvent[](array_length);
+
+        for(uint i = 0; i < array_length; i++){
+            own_use_event_list[i] = use_event_list[use_event_maker_list[msg.sender].use_event_id_list[i]];
         }
 
         return own_use_event_list;
