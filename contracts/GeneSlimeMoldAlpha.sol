@@ -164,6 +164,7 @@ contract GeneSlimeMoldAlpha{
 
         transfer(use_event_list[use_event_id].offer_to_address, use_event_list[use_event_id].pay_amount);
         transfer(gene_mining_data_list[use_event_list[use_event_id].gene_data_id].miner_address, miner_used_bonus);
+        gene_mining_data_list[use_event_list[use_event_id].gene_data_id].used_count += 1;
     }
 
 /*遺伝情報の定義情報*/
