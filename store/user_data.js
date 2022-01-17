@@ -1,5 +1,5 @@
 export const state = () => ({
-    my_address: "apple",
+    my_address: "",
     my_gene_data: [],
     my_mined_gene_data: [],
     my_use_event_data: [],

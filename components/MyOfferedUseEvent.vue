@@ -34,12 +34,10 @@
         },
         methods:{
             acceptUseEvent: async function(gene_data_id){
-                let my_account = await this.$contract.methods.request_my_account_address().call();
-                await this.$contract.methods.approve_use_event_offer(gene_data_id).send({from: my_account});
+                await this.$contract.methods.approve_use_event_offer(gene_data_id).send({from: this.$store.state.user_data.my_address});
             },
             blockUseEvent: async function(gene_data_id){
-                let my_account = await this.$contract.methods.request_my_account_address().call();
-                await this.$contract.methods.block_use_event_offer(gene_data_id).send({from: my_account});
+                await this.$contract.methods.block_use_event_offer(gene_data_id).send({from: this.$store.state.user_data.my_address});
             }
         }
     }

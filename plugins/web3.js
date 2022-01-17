@@ -25,23 +25,26 @@ export default async function(context, inject) {
         artifacts.networks[networkId].address // ネットワークIDごとに保存されているコントラクトのアドレスを読み込む
     )
 
-    let my_address = await contract.methods.request_my_account_address().call();
-    context.store.dispatch("user_data/get_my_address", my_address);
+    web3.eth.getAccounts((err, res) => {
+        console.log(res[0]);
+        context.store.dispatch("user_data/get_my_address", res[0]);
+    });
+
     //console.log("my account address: " + context.store.state.user_data.my_address);
 
-    let my_gene_data = await contract.methods.request_own_gene_mining_data_list().call();
+    let my_gene_data = await contract.methods.request_own_gene_mining_data_list().call({from: context.store.state.user_data.my_address});
     context.store.dispatch("user_data/get_my_gene_data", my_gene_data);
     //console.log("my gene data: " + context.store.state.user_data.my_gene_data);
 
-    let my_mined_gene_data = await contract.methods.request_own_mined_gene_mining_data_list().call();
+    let my_mined_gene_data = await contract.methods.request_own_mined_gene_mining_data_list().call({from: context.store.state.user_data.my_address});
     context.store.dispatch("user_data/get_my_mined_gene_data", my_mined_gene_data);
     //console.log("my mined gene data: " + context.store.state.user_data.my_mined_gene_data);
 
-    let my_use_event_data = await contract.methods.request_own_use_event_list().call();
+    let my_use_event_data = await contract.methods.request_own_use_event_list().call({from: context.store.state.user_data.my_address});
     context.store.dispatch("user_data/get_my_use_event_data", my_use_event_data);
     //console.log("my use event data: " + context.store.state.user_data.my_use_event_data);
 
-    let my_made_use_event_data = await contract.methods.request_own_made_use_event_list().call();
+    let my_made_use_event_data = await contract.methods.request_own_made_use_event_list().call({from: context.store.state.user_data.my_address});
     context.store.dispatch("user_data/get_my_made_use_event_data", my_made_use_event_data);
     //console.log("my made use event data: " + context.store.state.user_data.my_made_use_event_data);
 

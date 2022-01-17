@@ -31,8 +31,7 @@
         },
         methods:{
             executeUseEvent: async function(gene_data_id){
-                let my_account = await this.$contract.methods.request_my_account_address().call();
-                await this.$contract.methods.execute_use_event(gene_data_id).send({from: my_account});
+                await this.$contract.methods.execute_use_event(gene_data_id).send({from: this.$store.state.user_data.my_address});
             }
         }
     }

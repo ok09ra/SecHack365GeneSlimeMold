@@ -20,12 +20,10 @@ export default{
     }},
     methods:{
         async addBlockList(e){
-            let my_account = await this.$contract.methods.request_my_account_address().call();
-            await this.$contract.methods.add_block_list(this.block_user_address).send({from: my_account});
+            await this.$contract.methods.add_block_list(this.block_user_address).send({from: this.$store.state.user_data.my_address});
         },
         async forgiveBlockUser(e){
-            let my_account = await this.$contract.methods.request_my_account_address().call();
-            await this.$contract.methods.remove_block_list(this.block_user_address).send({from: my_account});
+            await this.$contract.methods.remove_block_list(this.block_user_address).send({from: this.$store.state.user_data.my_address});
         }
     }
 }

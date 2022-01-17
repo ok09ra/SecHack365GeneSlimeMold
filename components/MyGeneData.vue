@@ -33,12 +33,10 @@
         },
         methods:{
             acceptGeneData: async function(gene_data_id){
-                let my_account = await this.$contract.methods.request_my_account_address().call();
-                await this.$contract.methods.accept_mining_gene(gene_data_id).send({from: my_account});
+                await this.$contract.methods.accept_mining_gene(gene_data_id).send({from: this.$tore.state.user_data.my_address});
             },
             blockGeneData: async function(gene_data_id){
-                let my_account = await this.$contract.methods.request_my_account_address().call();
-                await this.$contract.methods.blocked_mining_gene(gene_data_id).send({from: my_account});
+                await this.$contract.methods.blocked_mining_gene(gene_data_id).send({from: this.$tore.state.user_data.my_address});
             }
         }
     }
