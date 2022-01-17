@@ -43,6 +43,11 @@ contract GeneSlimeMoldAlpha{
         bool is_blocked_by_holder;
     }
 
+    //通貨情報
+    string public coin_name = "GeneCoin";
+    string public symbol = "GC";
+
+    mapping(address => uint) public balances; //各アドレスの保有通貨
     mapping(address => GeneHolder) private gene_holder_list; //ユーザーと遺伝子保持情報を紐づけ
     mapping(address => GeneMiner) private gene_miner_list; //ユーザーと遺伝子マイニング情報を紐づけ
     mapping(address => UseEventMaker) private use_event_maker_list; //ユーザーと遺伝子使用イベントを紐づけ
@@ -115,6 +120,26 @@ contract GeneSlimeMoldAlpha{
         use_event_list[use_event_id].is_approved = false;
     }
 
+/*通貨関連*/
+    //アドレスの残高を返す
+    function balanceOf(address _owner) public view returns (uint) {
+        return (balances[_owner]);
+    }
+    //msg.senderがアカウントに指定量のトークンを送金する。
+    function transfer(address _to, uint256 _value) public {
+        require(_value <= balances[msg.sender]);
+
+        balances[msg.sender] -= _value;
+        balances[_to] += _value;
+    }
+    
+    //SuperVisorがアカウントに指定量のトークンを発行する。
+    function supervisorTransfer(address _to, uint256 _value) public{
+        require(supervisor == msg.sender);
+        balances[_to] += _value;
+
+
+    }
 /*利用実行と金銭やり取り関連*/
 
     //送金するための関数
@@ -149,6 +174,7 @@ contract GeneSlimeMoldAlpha{
         require(gene_mining_data_list[gene_mining_data_id].gene_holder_address == msg.sender);
         gene_mining_data_list[gene_mining_data_id].is_blocked_by_holder = false;
         gene_mining_data_list[gene_mining_data_id].is_accepted_by_holder = true;
+        
     }
 
     //本人がその解析情報を棄却する。
