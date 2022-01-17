@@ -42,6 +42,7 @@ contract GeneSlimeMoldAlpha{
         address miner_address;
         bool is_accepted_by_holder;
         bool is_blocked_by_holder;
+        uint Used_count;
     }
 
     //通貨情報
@@ -168,7 +169,7 @@ contract GeneSlimeMoldAlpha{
         require(gene_holder_list[gene_holder_address].block_address_list[msg.sender] == false);//ブロックリストに含まれていないか
         uint id = gene_mining_data_list.length;
 
-        gene_mining_data_list.push(GeneMiningData(id, gene_url, description, gene_holder_address, msg.sender, false, false));
+        gene_mining_data_list.push(GeneMiningData(id, gene_url, description, gene_holder_address, msg.sender, false, false, 0));
         gene_holder_list[gene_holder_address].gene_mining_data_id_list.push(id);
         gene_miner_list[msg.sender].mined_gene_mining_data_id_list.push(id);
     }
