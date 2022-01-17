@@ -4,20 +4,24 @@
         <table class="geneLists">
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>description</th>
                     <th>Miner_address</th>
                     <th>gene_url</th>
                     <th>is_accepted</th>
                     <th>is_blocked</th>
+                    <th>used count</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(my_gene_data, index) in this.$store.state.user_data.my_gene_data" :key="index">
+                    <td>{{my_gene_data.id}}</td>
                     <td>{{my_gene_data.description}}</td>
                     <td>{{my_gene_data.miner_address}}</td>
                     <td>{{my_gene_data.url}}</td>
                     <td>{{my_gene_data.is_accepted_by_holder}}</td>
                     <td>{{my_gene_data.is_blocked_by_holder}}</td>
+                    <td>{{my_gene_data.used_count}}</td>
                     <td><button @click="acceptGeneData(my_gene_data.id)">accept</button></td>
                     <td><button @click="blockGeneData(my_gene_data.id)">block</button></td>
                 </tr>

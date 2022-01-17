@@ -9,9 +9,13 @@
             <br>
             <label>
                 Description
+                <textarea type="number" v-model="make_use_event_form_gene_data_id"></textarea>
+            </label>
+            <label>
+                Description
                 <textarea type="text" v-model="make_use_event_form_description"></textarea>
             </label>
-            <br>        
+            <br>
             <label>
                 Payment
                 <input type="number" v-model="make_use_event_form_payment">
@@ -26,12 +30,13 @@
 export default{
     data(){return{
         make_use_event_form_gene_holder_address: "",
+        make_use_event_form_gene_data_id: "",
         make_use_event_form_description: "",
         make_use_event_form_payment: "",
     }},
     methods:{
         async make_use_event(e){
-            await this.$contract.methods.generate_use_event(this.make_use_event_form_description, this.make_use_event_form_gene_holder_address, this.make_use_event_form_payment).send({from: this.$store.state.user_data.my_address});
+            await this.$contract.methods.generate_use_event(this.make_use_event_form_description, this.make_use_event_form_gene_holder_address, this.make_use_event_form_gene_data_id, this.make_use_event_form_payment).send({from: this.$store.state.user_data.my_address});
         }
     }
 }

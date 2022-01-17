@@ -20,6 +20,7 @@
                     <td>{{my_mined_gene.gene_url}}</td>
                     <td>{{my_mined_gene.is_accepted_by_holder}}</td>
                     <td>{{my_mined_gene.is_blocked_by_holder}}</td>
+                    <td>{{my_mined_gene.used_count}}</td>
                 </tr>
             </tbody>
         </table>

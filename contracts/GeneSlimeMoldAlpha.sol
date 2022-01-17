@@ -42,7 +42,7 @@ contract GeneSlimeMoldAlpha{
         address miner_address;
         bool is_accepted_by_holder;
         bool is_blocked_by_holder;
-        uint Used_count;
+        uint used_count;
     }
 
     //通貨情報
