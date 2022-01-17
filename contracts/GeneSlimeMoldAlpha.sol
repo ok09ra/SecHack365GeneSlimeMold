@@ -58,7 +58,8 @@ contract GeneSlimeMoldAlpha{
     UseEvent[] public use_event_list; //use eventのリスト
 
     address public supervisor; //コントラクトのオーナー
-
+    uint public miner_used_bonus = 10; //マイナーの利用ボーナス
+    
     constructor() public payable {
         supervisor = msg.sender; //コントラクトがデプロイされたときのオーナーをスーパーバイザーとする。
     }
@@ -160,6 +161,9 @@ contract GeneSlimeMoldAlpha{
         //require(use_event_list[use_event_id].pay_amount <= address(this).balance);
         //balance_to(use_event_list[use_event_id].offer_to_address, use_event_list[use_event_id].pay_amount);
         use_event_list[use_event_id].is_executed = true;
+
+        transfer(use_event_list[use_event_id].offer_to_address, use_event_list[use_event_id].pay_amount);
+        transfer(gene_mining_data_list[use_event_list[use_event_id].gene_data_id].miner_address, miner_used_bonus)
     }
 
 /*遺伝情報の定義情報*/
