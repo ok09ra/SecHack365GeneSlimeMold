@@ -26,6 +26,7 @@ contract GeneSlimeMoldAlpha{
         address event_owner_address;
         string description;
         address payable offer_to_address;
+        uint gene_data_id;
         uint pay_amount;
         bool is_approved;
         bool is_blocked;
@@ -95,12 +96,13 @@ contract GeneSlimeMoldAlpha{
 
 /*遺伝子使用イベント定義関連 */
     //use event maker がuse event を発行する。
-    function generate_use_event(string memory description, address payable offer_to_address, uint payment) public {
+    function generate_use_event(string memory description, address payable offer_to_address, uint gene_data_id, uint payment) public {
         //require(use_event_maker_list[msg.sender].is_available);//実行者がevent makerであるかを確認
         require(gene_holder_list[offer_to_address].block_address_list[msg.sender] == false);//ブロックリストに含まれていないか
+        require(gene_mining_data_list[gene_data_id].gene_holder_address == offer_to_address);//解析情報がそのオファーするヒトのものか
         uint id = use_event_list.length;
         
-        use_event_list.push(UseEvent(id, msg.sender, description, offer_to_address, payment, false, false, false)); // use_event_listに定義したuse eventを入力して、その配列の番号をidとして保持
+        use_event_list.push(UseEvent(id, msg.sender, description, offer_to_address, gene_data_id, payment, false, false, false)); // use_event_listに定義したuse eventを入力して、その配列の番号をidとして保持
         use_event_maker_list[msg.sender].use_event_id_list.push(id); //自分のuse_event_listにidを加える。
 
         gene_holder_list[offer_to_address].use_event_id_list.push(id);//オファーするgene holderにidを送る。
@@ -109,6 +111,7 @@ contract GeneSlimeMoldAlpha{
     //use eventを承認する。
     function approve_use_event_offer(uint use_event_id) public{
         require(use_event_list[use_event_id].offer_to_address == msg.sender);
+        require(gene_mining_data_list[use_event_list[use_event_id].gene_data_id].gene_holder_address == msg.sender);
         use_event_list[use_event_id].is_approved = true;
         use_event_list[use_event_id].is_blocked = false;
     }
@@ -116,6 +119,7 @@ contract GeneSlimeMoldAlpha{
     //use eventを棄却する。
     function block_use_event_offer(uint use_event_id) public{
         require(use_event_list[use_event_id].offer_to_address == msg.sender);
+        require(gene_mining_data_list[use_event_list[use_event_id].gene_data_id].gene_holder_address == msg.sender);
         use_event_list[use_event_id].is_blocked = true;
         use_event_list[use_event_id].is_approved = false;
     }
