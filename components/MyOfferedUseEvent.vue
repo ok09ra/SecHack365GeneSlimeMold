@@ -6,7 +6,8 @@
                 <tr>
                     <th>id</th>
                     <th>description</th>
-                    <th>To_address</th>
+                    <th>offer from</th>
+                    <th>Pay_amount</th>
                     <th>is_accepted</th>
                     <th>is_blocked</th>
                     <th>is_executed</th>
@@ -16,7 +17,8 @@
                 <tr v-for="(my_use_event, index) in this.$store.state.user_data.my_use_event_data" :key="index">
                     <td>{{my_use_event.id}}</td>
                     <td>{{my_use_event.description}}</td>
-                    <td>{{my_use_event.offer_to_address}}</td>
+                    <td>{{my_use_event.event_owner_address}}</td>
+                    <td>{{my_use_event.pay_amount}}</td>
                     <td>{{my_use_event.is_approved}}</td>
                     <td>{{my_use_event.is_blocked}}</td>
                     <td>{{my_use_event.is_executed}}</td>

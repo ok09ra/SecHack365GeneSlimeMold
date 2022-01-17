@@ -7,6 +7,7 @@
                 <th>id</th>
                 <th>description</th>
                 <th>To_address</th>
+                <th>payment</th>
                 <th>is_accepted</th>
                 <th>is_blocked</th>
                 <th>is_executed</th>
@@ -17,6 +18,7 @@
                     <td>{{my_made_use_event.id}}</td>
                     <td>{{my_made_use_event.description}}</td>
                     <td>{{my_made_use_event.offer_to_address}}</td>
+                    <td>{{my_made_use_event.pay_amountn}}</td>
                     <td>{{my_made_use_event.is_approved}}</td>
                     <td>{{my_made_use_event.is_blocked}}</td>
                     <td>{{my_made_use_event.is_executed}}</td>

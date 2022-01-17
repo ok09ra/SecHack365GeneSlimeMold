@@ -102,6 +102,7 @@ contract GeneSlimeMoldAlpha{
         //require(use_event_maker_list[msg.sender].is_available);//実行者がevent makerであるかを確認
         require(gene_holder_list[offer_to_address].block_address_list[msg.sender] == false);//ブロックリストに含まれていないか
         require(gene_mining_data_list[gene_data_id].gene_holder_address == offer_to_address);//解析情報がそのオファーするヒトのものか
+        require(gene_mining_data_list[gene_data_id].is_accepted_by_holder == true);
         uint id = use_event_list.length;
         
         use_event_list.push(UseEvent(id, msg.sender, description, offer_to_address, gene_data_id, payment, false, false, false)); // use_event_listに定義したuse eventを入力して、その配列の番号をidとして保持

@@ -8,9 +8,10 @@
             </label>
             <br>
             <label>
-                Description
-                <textarea type="number" v-model="make_use_event_form_gene_data_id"></textarea>
+                Use Gene Id
+                <input type="number" v-model="make_use_event_form_gene_data_id"></input>
             </label>
+            <br>
             <label>
                 Description
                 <textarea type="text" v-model="make_use_event_form_description"></textarea>

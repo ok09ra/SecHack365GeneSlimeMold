@@ -37,10 +37,10 @@
         },
         methods:{
             acceptGeneData: async function(gene_data_id){
-                await this.$contract.methods.accept_mining_gene(gene_data_id).send({from: this.$tore.state.user_data.my_address});
+                await this.$contract.methods.accept_mining_gene(gene_data_id).send({from: this.$store.state.user_data.my_address});
             },
             blockGeneData: async function(gene_data_id){
-                await this.$contract.methods.blocked_mining_gene(gene_data_id).send({from: this.$tore.state.user_data.my_address});
+                await this.$contract.methods.blocked_mining_gene(gene_data_id).send({from: this.$store.state.user_data.my_address});
             }
         }
     }
