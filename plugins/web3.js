@@ -50,6 +50,9 @@ export default async function(context, inject) {
     context.store.dispatch("user_data/get_my_made_use_event_data", my_made_use_event_data);
     //console.log("my made use event data: " + context.store.state.user_data.my_made_use_event_data);
 
+    let my_coin_value = await contract.methods.balanceOf().call({from: context.store.state.user_data.my_address});
+    context.store.dispatch("user_data/get_my_coin_value", my_coin_value);
+
     inject('web3',web3)
     inject('contract',contract) // インスタンスを生やす
 }

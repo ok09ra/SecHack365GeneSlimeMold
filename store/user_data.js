@@ -3,7 +3,8 @@ export const state = () => ({
     my_gene_data: [],
     my_mined_gene_data: [],
     my_use_event_data: [],
-    my_made_use_event_data: []
+    my_made_use_event_data: [],
+    my_coin_value:0,
 })
 
 export const mutations = {
@@ -22,6 +23,9 @@ export const mutations = {
     get_my_made_use_event_data(state, made_use_event_data){
         state.my_made_use_event_data = made_use_event_data
     },
+    get_my_coin_value(state, coin_value){
+        state.my_coin_value = coin_value
+    }
 }
 
 export const actions = {
@@ -40,5 +44,8 @@ export const actions = {
     get_my_made_use_event_data({commit}, made_use_event_data){
         commit('get_my_made_use_event_data', made_use_event_data)
     },
+    get_my_coin_value({commit}, coin_value){
+        commit('get_my_coin_value', coin_value)
+    }
 
 }

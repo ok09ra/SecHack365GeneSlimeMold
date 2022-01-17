@@ -59,7 +59,7 @@ contract GeneSlimeMoldAlpha{
 
     address public supervisor; //コントラクトのオーナー
     uint public miner_used_bonus = 10; //マイナーの利用ボーナス
-    
+
     constructor() public payable {
         supervisor = msg.sender; //コントラクトがデプロイされたときのオーナーをスーパーバイザーとする。
     }
@@ -128,8 +128,8 @@ contract GeneSlimeMoldAlpha{
 
 /*通貨関連*/
     //アドレスの残高を返す
-    function balanceOf(address _owner) public view returns (uint) {
-        return (balances[_owner]);
+    function balanceOf() public view returns (uint) {
+        return (balances[msg.sender]);
     }
     //msg.senderがアカウントに指定量のトークンを送金する。
     function transfer(address _to, uint256 _value) public {
@@ -163,7 +163,7 @@ contract GeneSlimeMoldAlpha{
         use_event_list[use_event_id].is_executed = true;
 
         transfer(use_event_list[use_event_id].offer_to_address, use_event_list[use_event_id].pay_amount);
-        transfer(gene_mining_data_list[use_event_list[use_event_id].gene_data_id].miner_address, miner_used_bonus)
+        transfer(gene_mining_data_list[use_event_list[use_event_id].gene_data_id].miner_address, miner_used_bonus);
     }
 
 /*遺伝情報の定義情報*/
