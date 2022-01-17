@@ -1,6 +1,7 @@
 <template>
   <div>
     <HeaderMenu />
+    <GenerateCoin />
     <h1>by taiyaki</h1>
   </div>
 </template>
