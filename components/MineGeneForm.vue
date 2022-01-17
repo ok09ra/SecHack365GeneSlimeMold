@@ -32,8 +32,7 @@ export default{
     }},
     methods:{
         async submit_gene_data(e){
-            let my_account = await this.$contract.methods.request_my_account_address().call();
-            await this.$contract.methods.register_mining_gene(this.mine_gene_form_gene_holder_address, this.mine_gene_form_gene_url, this.mine_gene_form_description).send({from: my_account})
+            await this.$contract.methods.register_mining_gene(this.mine_gene_form_gene_holder_address, this.mine_gene_form_gene_url, this.mine_gene_form_description).send({from: this.$store.state.user_data.my_address})
         }
     }
 }

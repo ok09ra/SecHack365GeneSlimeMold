@@ -31,8 +31,7 @@ export default{
     }},
     methods:{
         async make_use_event(e){
-            let my_account = await this.$contract.methods.request_my_account_address().call();
-            await this.$contract.methods.generate_use_event(this.make_use_event_form_description, this.make_use_event_form_gene_holder_address, this.make_use_event_form_payment).send({from: my_account});
+            await this.$contract.methods.generate_use_event(this.make_use_event_form_description, this.make_use_event_form_gene_holder_address, this.make_use_event_form_payment).send({from: this.$store.state.user_data.my_address});
         }
     }
 }

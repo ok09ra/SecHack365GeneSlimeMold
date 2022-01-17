@@ -4,25 +4,26 @@ import mapState from "vuex"
 
 export default async function(context, inject) {
     let web3
-    // MetaMask ver0.5以降のチェック処理
-    if (typeof window.ethereum) {
+    // MetaMask ver0.5以降のチェック処理 ref https://www.techpit.jp/courses/36/curriculums/37/sections/306/parts/1020
+    if (window.ethereum) {
         // web3のインスタンスを作成する
         let instance = new Web3(window.ethereum);
         try {
-            // アカウントへのアクセスを要求する
-            window.ethereum.enable();
             // MetaMaskのプロバイダの使用
             web3 = instance;
+            // アカウントへのアクセスを要求する
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                console.log(accounts)
+                context.store.dispatch("user_data/get_my_address", accounts[0]);
+              } catch (error) {
+                console.log(error)
+              }
+
         } catch (error) {
             // アクセスを拒否された時のアラートを表示
             alert('Please allow access for the app to work');
         }
-    // MetaMask ver0.5以前のチェック処理
-    } else if (window.web3) {
-        // MetaMaskのプロバイダの使用
-        web3 = new Web3(window.web3.currentProvider);
-    } else {
-        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
 
     let networkId = await web3.eth.net.getId()// チェーンのネットワークIDを取得
@@ -30,11 +31,6 @@ export default async function(context, inject) {
         artifacts.abi, // コントラクトのコンパイル後の設定ファイル
         artifacts.networks[networkId].address // ネットワークIDごとに保存されているコントラクトのアドレスを読み込む
     )
-
-    web3.eth.getAccounts((err, res) => {
-        console.log(res[0]);
-        context.store.dispatch("user_data/get_my_address", res[0]);
-    });
 
     //console.log("my account address: " + context.store.state.user_data.my_address);
 
