@@ -4,7 +4,8 @@
     {
       "inputs": [],
       "stateMutability": "payable",
-      "type": "constructor"
+      "type": "constructor",
+      "payable": true
     },
     {
       "inputs": [
@@ -23,7 +24,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -36,7 +38,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -90,7 +93,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -103,7 +107,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -116,7 +121,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -129,7 +135,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -188,7 +195,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -333,7 +341,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -387,7 +396,8 @@
       "name": "balance_to",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -462,7 +472,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -517,7 +528,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -577,7 +589,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -632,7 +645,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -692,7 +706,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gene_mining_data_id\",\"type\":\"uint256\"}],\"name\":\"accept_mining_gene\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"block_address\",\"type\":\"address\"}],\"name\":\"add_block_list\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"use_event_id\",\"type\":\"uint256\"}],\"name\":\"approve_use_event_offer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"reciever_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"pay_amount\",\"type\":\"uint256\"}],\"name\":\"balance_to\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balances\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"use_event_id\",\"type\":\"uint256\"}],\"name\":\"block_use_event_offer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gene_mining_data_id\",\"type\":\"uint256\"}],\"name\":\"blocked_mining_gene\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"coin_name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"use_event_id\",\"type\":\"uint256\"}],\"name\":\"execute_use_event\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"gene_mining_data_list\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"gene_holder_address\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"miner_address\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"is_accepted_by_holder\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_blocked_by_holder\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"used_count\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"miner_address\",\"type\":\"address\"}],\"name\":\"generate_gene_miner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address payable\",\"name\":\"offer_to_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"gene_data_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"payment\",\"type\":\"uint256\"}],\"name\":\"generate_use_event\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"use_event_maker_address\",\"type\":\"address\"}],\"name\":\"generate_use_event_maker\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"miner_address\",\"type\":\"address\"}],\"name\":\"invalidate_gene_miner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"use_event_maker_address\",\"type\":\"address\"}],\"name\":\"invalidate_use_event_maker\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"miner_used_bonus\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"gene_holder_address\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"gene_url\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"register_mining_gene\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"block_address\",\"type\":\"address\"}],\"name\":\"remove_block_list\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"request_my_account_address\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"request_own_gene_mining_data_list\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"gene_holder_address\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"miner_address\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"is_accepted_by_holder\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_blocked_by_holder\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"used_count\",\"type\":\"uint256\"}],\"internalType\":\"struct GeneSlimeMoldAlpha.GeneMiningData[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"request_own_made_use_event_list\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"event_owner_address\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address payable\",\"name\":\"offer_to_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"gene_data_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"pay_amount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"is_approved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_blocked\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_executed\",\"type\":\"bool\"}],\"internalType\":\"struct GeneSlimeMoldAlpha.UseEvent[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"request_own_mined_gene_mining_data_list\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"gene_holder_address\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"miner_address\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"is_accepted_by_holder\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_blocked_by_holder\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"used_count\",\"type\":\"uint256\"}],\"internalType\":\"struct GeneSlimeMoldAlpha.GeneMiningData[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"request_own_use_event_list\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"event_owner_address\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address payable\",\"name\":\"offer_to_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"gene_data_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"pay_amount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"is_approved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_blocked\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_executed\",\"type\":\"bool\"}],\"internalType\":\"struct GeneSlimeMoldAlpha.UseEvent[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"supervisor\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"supervisorTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"use_event_list\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"event_owner_address\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address payable\",\"name\":\"offer_to_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"gene_data_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"pay_amount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"is_approved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_blocked\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"is_executed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/GeneSlimeMoldAlpha.sol\":\"GeneSlimeMoldAlpha\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/GeneSlimeMoldAlpha.sol\":{\"keccak256\":\"0xe68a63c8197e693bbe3365c51885939867980c0b902acad80ad8a30770c1a63c\",\"urls\":[\"bzz-raw://3c0bfe70376907950aa9b545ac494bb2111275922c1eda53ab68dc0847e27362\",\"dweb:/ipfs/QmTt8PH554q8hf9zK8RHjzuStv2nrKBCZUnmy6T8Dh5QJL\"]}},\"version\":1}",
@@ -34914,12 +34929,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x818928ee253Fbec500adB3A98517BdBbA61965b0",
-      "transactionHash": "0xa5d40ff6d7f45e0619f58b11b9d215228b9e6d7e747c9a1e9351c1cb9afc2968"
+      "address": "0x72ba059F29A0157598C69ddAB8Ee8569AeFbeeA5",
+      "transactionHash": "0xc52988ab15a1d549265d7db8c22ea6e4627c57993ebc4e5f7edfd2e5ffc64552"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-01-17T20:51:29.497Z",
+  "updatedAt": "2022-01-22T02:20:15.507Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

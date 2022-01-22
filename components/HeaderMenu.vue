@@ -5,8 +5,8 @@
         <p id="CoinValue">Gene Coin: {{$store.state.user_data.my_coin_value}} [GC]</p>
         <li><nuxt-link to="/" >Top page</nuxt-link></li>
         <li><nuxt-link to="/holder" >Gene Holder Page</nuxt-link></li>
-        <li><nuxt-link to="/usereventmaker" >Use Event Maker Page</nuxt-link></li>
         <li><nuxt-link to="/miner" >Gene Miner Page</nuxt-link></li>
+        <li><nuxt-link to="/usereventmaker" >Use Event Maker Page</nuxt-link></li>
     </div>
 </template>
 
